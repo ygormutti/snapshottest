@@ -72,6 +72,21 @@ class APITestCase(TestCase):
 If you want to update the snapshots automatically you can use the `python manage.py test --snapshot-update`.
 Check the [Django example](https://github.com/syrusakbary/snapshottest/tree/master/examples/django_project).
 
+## Usage alongside formatters
+
+snapshottest stores snapshots as regular Python modules, following a code style which may differ from your project's code style. If you use formatters in your pre-commit hook, lint or CI scripts, this may become an issue for you. Fortunately, all major formatters offers an option to exclude files based on a pattern, that you can use to avoid formatting the snapshot modules:
+
+```
+# Black https://github.com/python/black
+black . --exclude '.*/snapshots/.*
+
+# autopep8
+# TODO
+
+# yapf
+# TODO
+```
+
 # Contributing
 
 After cloning this repo and configuring a virtualenv for snapshottest (optional, but highly recommended), ensure dependencies are installed by running:
